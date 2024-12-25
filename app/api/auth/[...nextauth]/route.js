@@ -19,7 +19,7 @@ const handler = NextAuth({
 
       return session;
     },
-    async signIn({ account, profile, user, credentials }) {
+    async signIn({ account, profile, user, credentials }) {debugger;
       try {
         await connectToDB();
 
@@ -30,7 +30,7 @@ const handler = NextAuth({
         if (!userExists) {
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
+            username: profile.family_name,
             image: profile.picture,
           });
         }
